@@ -26,8 +26,17 @@ const images = [
 ];
 const gallery = document.querySelector(".gallery");
 
-const galleryMarkup = images
-  .map(({ url, alt }) => `<li class="gallery-item"><img src="${url}" alt="${alt}" class="gallery-img"></li>`)
-  .join("");
+function createMarkup(arr) {
+  return arr.map(item => `
+    <li><img src='${item.url}' alt='${item.alt}'></li>`
 
-gallery.insertAdjacentHTML("beforeend", galleryMarkup);
+  ).join('')
+ 
+};
+
+console.log(createMarkup(images));
+gallery.style.justifyContent = "center";
+gallery.style.alignItems = "center";
+gallery.style.display = "flex";
+gallery.style.flexWrap = "wrap";
+gallery.insertAdjacentHTML("beforeend", createMarkup(images));
